@@ -1,13 +1,17 @@
 use crate::rocket::serde::Serialize;
+use crate::sales::domain_values::ContractFailure;
 
 #[derive(Debug, Clone, PartialEq, Eq, Hash, Serialize)]
 #[serde(crate = "rocket::serde")]
 pub struct ContractNumber(String);
 
 impl ContractNumber {
-    pub fn new(number: String) -> Self {
-        assert!(is_valid_rainbow_format(&number), "Invalid ContractNumber Format");
-        ContractNumber(number)
+    pub fn new(number: String) -> Result<Self, ContractFailure> {
+        if is_valid_rainbow_format(&number) {
+            Ok(ContractNumber(number))
+        } else {
+            Err(ContractFailure::InvalidInput)
+        }
     }
 }
 
@@ -59,14 +63,15 @@ mod test {
         use crate::sales::domain_values::ContractNumber;
 
         #[test]
-        #[should_panic]
         fn invalid_format() {
-            let _ = ContractNumber::new("ABCD-1234-A[[2-Qas3".to_owned());
+            let contract_number = ContractNumber::new("ABCD-1234-A[[2-Qas3".to_owned());
+            assert!(contract_number.is_err());
         }
 
         #[test]
         fn valid() {
-            let _ = ContractNumber::new("ABCD-1234-A1B2-Qas3".to_owned());
+            let contract_number = ContractNumber::new("ABCD-1234-A1B2-Qas3".to_owned());
+            assert!(contract_number.is_ok());
         }
     }
 }

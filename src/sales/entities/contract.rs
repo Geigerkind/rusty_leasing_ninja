@@ -53,7 +53,7 @@ mod test {
         #[test]
         #[should_panic]
         fn should_fail_with_signed_contract() {
-            let contract_number = ContractNumber::new("1234-1234-1234-1234".to_owned());
+            let contract_number = ContractNumber::new("1234-1234-1234-1234".to_owned()).unwrap();
             let customer = Customer::new("Max".to_owned(), "Mustermann".to_owned());
             let car = Car::new(Brand::Tesla);
             let amount = Amount::new(12345, Currency::Euro);
@@ -66,7 +66,7 @@ mod test {
 
         #[test]
         fn should_be_signed_after_signing() {
-            let contract_number = ContractNumber::new("1234-1234-1234-1234".to_owned());
+            let contract_number = ContractNumber::new("1234-1234-1234-1234".to_owned()).unwrap();
             let customer = Customer::new("Max".to_owned(), "Mustermann".to_owned());
             let car = Car::new(Brand::Tesla);
             let amount = Amount::new(12345, Currency::Euro);

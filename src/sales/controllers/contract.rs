@@ -11,16 +11,14 @@ use chrono::Utc;
 
 #[get("/view_contract/<contract_number>")]
 pub fn view_contract(me: &State<Sales>, contract_number: String) -> Result<Json<Contract>, ContractFailure> {
-    // TODO: Failure should be handled
-    let number = ContractNumber::new(contract_number);
+    let number = ContractNumber::new(contract_number)?;
     me.view_contract(number).map(Json)
 }
 
 #[post("/fill_out_contract", data = "<fill_out_form>")]
 pub fn fill_out_contract(me: &State<Sales>, fill_out_form: Json<FillOutForm>) -> Result<(), ContractFailure> {
-    // TODO: Failure should be handled
     let fill_out_form = fill_out_form.into_inner();
-    let number = ContractNumber::new(fill_out_form.contract_number);
+    let number = ContractNumber::new(fill_out_form.contract_number)?;
     let customer = Customer::new(fill_out_form.customer_forename, fill_out_form.customer_surname);
     let car_brand = Brand::from_str(&fill_out_form.car_brand).map_err(|_| ContractFailure::InvalidInput)?;
     let car = Car::new(car_brand);
@@ -32,8 +30,7 @@ pub fn fill_out_contract(me: &State<Sales>, fill_out_form: Json<FillOutForm>) ->
 
 #[post("/sign_contract", data = "<contract_number>")]
 pub fn sign_contract(me: &State<Sales>, contract_number: Json<String>) -> Result<(), ContractFailure> {
-    // TODO: Failure should be handled
-    let number = ContractNumber::new(contract_number.into_inner());
+    let number = ContractNumber::new(contract_number.into_inner())?;
     let sign_date = SignDate::from_date_time(Utc::now());
     me.sign_contract(number, sign_date)
 }
