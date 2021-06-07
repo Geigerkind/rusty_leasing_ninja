@@ -18,8 +18,7 @@ fn is_valid_rainbow_format(number: &String) -> bool {
 #[cfg(test)]
 mod test {
     mod rainbow_format {
-        use crate::sales::domain::value::contract_number::is_valid_rainbow_format;
-        use crate::sales::domain::value::SignDate;
+        use crate::sales::domain_values::contract_number::is_valid_rainbow_format;
 
         #[test]
         fn invalid_gibberish() {
@@ -53,7 +52,7 @@ mod test {
     }
 
     mod constructor {
-        use crate::sales::domain::value::ContractNumber;
+        use crate::sales::domain_values::ContractNumber;
 
         #[test]
         #[should_panic]

@@ -1,4 +1,4 @@
-use crate::sales::domain::value::{Amount, Car, ContractNumber, Customer, SignDate};
+use crate::sales::domain_values::{Amount, Car, ContractNumber, Customer, SignDate};
 
 #[derive(Getters)]
 pub struct Contract {
@@ -6,7 +6,7 @@ pub struct Contract {
     customer: Customer,
     car: Car,
     price: Amount,
-    sign_date: Option<SignDate>
+    sign_date: Option<SignDate>,
 }
 
 impl Contract {
@@ -17,17 +17,17 @@ impl Contract {
             customer,
             car,
             price,
-            sign_date: Some(sign_date)
+            sign_date: Some(sign_date),
         }
     }
-    
+
     pub fn new(number: ContractNumber, customer: Customer, car: Car, price: Amount) -> Self {
         Contract {
             number,
             customer,
             car,
             price,
-            sign_date: None
+            sign_date: None,
         }
     }
 
@@ -40,14 +40,13 @@ impl Contract {
     fn is_signed(&self) -> bool {
         self.sign_date.is_some()
     }
-
 }
 
 #[cfg(test)]
 mod test {
     mod sign {
-        use crate::sales::domain::entity::Contract;
-        use crate::sales::domain::value::{ContractNumber, Customer, Car, Brand, Amount, Currency, SignDate};
+        use crate::sales::domain_values::{Amount, Brand, Car, ContractNumber, Currency, Customer, SignDate};
+        use crate::sales::entities::Contract;
 
         #[test]
         #[should_panic]

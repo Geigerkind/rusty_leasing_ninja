@@ -1,4 +1,4 @@
-use crate::sales::domain::value::Currency;
+use crate::sales::domain_values::Currency;
 
 #[derive(Getters)]
 pub struct Amount {

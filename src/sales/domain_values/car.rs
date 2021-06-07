@@ -1,4 +1,4 @@
-use crate::sales::domain::value::Brand;
+use crate::sales::domain_values::Brand;
 
 #[derive(Getters)]
 pub struct Car {
