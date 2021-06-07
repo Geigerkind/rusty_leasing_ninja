@@ -6,7 +6,7 @@ use rocket::response::Responder;
 
 use crate::rocket::serde::Serialize;
 
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, PartialEq)]
 #[serde(crate = "rocket::serde")]
 pub enum ContractFailure {
     ContractDoesNotExist,
