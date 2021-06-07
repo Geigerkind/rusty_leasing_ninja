@@ -8,6 +8,7 @@ homepage = "https://leasingninja.github.io/"
 [dependencies]
 derive-getters = "0.2.0"
 chrono = { version = "0.4.19", features = ["serde"] }
+strum = { version = "0.21", features = ["derive"] }
 
 [dependencies.rocket]
 git = "https://github.com/SergioBenitez/Rocket"

@@ -1,20 +1,23 @@
 use crate::sales::entities::Contract;
 use crate::sales::domain_values::ContractNumber;
 use std::collections::HashMap;
+use std::sync::RwLock;
 
 #[derive(Debug)]
-pub struct Contracts(HashMap<ContractNumber, Contract>);
+pub struct Contracts(RwLock<HashMap<ContractNumber, Contract>>);
 
 impl Contracts {
     pub fn new() -> Self {
-        Contracts(HashMap::default())
+        Contracts(RwLock::new(HashMap::default()))
     }
 
-    pub fn save(&mut self, contract: Contract) {
-        self.0.insert(contract.number().clone(), contract);
+    pub fn save(&self, contract: Contract) {
+        let mut repo = self.0.write().unwrap();
+        repo.insert(contract.number().clone(), contract);
     }
 
     pub fn get(&self, number: &ContractNumber) -> Option<Contract> {
-        self.0.get(number).cloned()
+        let repo = self.0.read().unwrap();
+        repo.get(number).cloned()
     }
 }

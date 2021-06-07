@@ -2,6 +2,8 @@
 extern crate derive_getters;
 #[macro_use]
 extern crate rocket;
+#[macro_use]
+extern crate strum;
 
 use crate::sales::Sales;
 
@@ -15,6 +17,7 @@ fn launch() -> _ {
     rocket::build()
         .manage(sales)
         .mount("/sales", routes![
-            crate::sales::controllers::contract::view_contract
+            crate::sales::controllers::contract::view_contract,
+            crate::sales::controllers::contract::fill_out_contract,
         ])
 }

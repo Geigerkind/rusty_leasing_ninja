@@ -5,4 +5,5 @@ pub mod entities;
 pub mod services;
 pub mod controllers;
 pub mod repositories;
+pub mod dtos;
 mod sales;
