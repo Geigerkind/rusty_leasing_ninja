@@ -19,7 +19,7 @@ impl SignContract for Sales {
 
 #[cfg(test)]
 mod test {
-    use chrono::{DateTime, NaiveDateTime, TimeZone, Utc};
+    use chrono::{DateTime, NaiveDateTime, Utc};
 
     use crate::risk_management::RiskManagement;
     use crate::sales::domain_values::{Amount, Brand, Car, Currency, Customer};
@@ -34,7 +34,7 @@ mod test {
         let number = ContractNumber::new("1234-1234-1234-1234".to_owned()).unwrap();
         let customer = Customer::new("Max".to_owned(), "Mustermann".to_owned());
         let car = Car::new(Brand::Porsche);
-        let price = Amount::new(123423, Currency::Euro);
+        let price = Amount::new(123423, Currency::Yen);
         let sign_date = SignDate::from_date_time(DateTime::from_utc(NaiveDateTime::from_timestamp(32432423, 0), Utc));
 
         sales.fill_out_contract(number.clone(), customer.clone(), car.clone(), price.clone());
