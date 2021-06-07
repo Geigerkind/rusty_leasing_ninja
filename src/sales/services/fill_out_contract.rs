@@ -9,6 +9,6 @@ pub trait FillOutContract {
 
 impl FillOutContract for Sales {
     fn fill_out_contract(&self, number: ContractNumber, customer: Customer, car: Car, price: Amount) {
-        self.contracts.save(Contract::new(number, customer, car, price));
+        self.contracts.save(number.clone(), Contract::new(number, customer, car, price));
     }
 }
