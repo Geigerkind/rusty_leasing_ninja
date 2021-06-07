@@ -19,4 +19,9 @@ impl<A: Eq + Hash, B: Clone> MemStorage<A, B> {
         let repo = self.0.read().unwrap();
         repo.get(key).cloned()
     }
+
+    pub fn all(&self) -> Vec<B> {
+        let repo = self.0.read().unwrap();
+        repo.values().cloned().collect::<Vec<B>>()
+    }
 }
