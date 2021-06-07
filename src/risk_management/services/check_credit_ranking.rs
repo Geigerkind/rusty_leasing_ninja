@@ -37,7 +37,7 @@ mod test {
     }
 
     #[test]
-    fn credit_ranking_does_not_exist() {
+    fn contract_does_not_exist() {
         let risk_management = RiskManagement::new();
         let number = ContractNumber::new("1234-1234-1234-1234".to_owned()).unwrap();
         let ranking = CreditRating::new(8).unwrap();
