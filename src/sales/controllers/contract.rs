@@ -4,6 +4,7 @@ use chrono::Utc;
 use rocket::serde::json::Json;
 use rocket::State;
 
+use crate::risk_management::RiskManagement;
 use crate::sales::domain_values::{Amount, Brand, Car, Currency, Customer};
 use crate::sales::dtos::FillOutForm;
 use crate::sales::entities::Contract;
@@ -31,8 +32,8 @@ pub fn fill_out_contract(me: &State<Sales>, fill_out_form: Json<FillOutForm>) ->
 }
 
 #[post("/sign_contract", data = "<contract_number>")]
-pub fn sign_contract(me: &State<Sales>, contract_number: Json<String>) -> Result<(), ContractFailure> {
+pub fn sign_contract(me: &State<Sales>, risk_management: &State<RiskManagement>, contract_number: Json<String>) -> Result<(), ContractFailure> {
     let number = ContractNumber::new(contract_number.into_inner())?;
     let sign_date = SignDate::from_date_time(Utc::now());
-    me.sign_contract(number, sign_date)
+    me.sign_contract(&risk_management, number, sign_date)
 }
