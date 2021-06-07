@@ -19,5 +19,6 @@ fn launch() -> _ {
         .mount("/sales", routes![
             crate::sales::controllers::contract::view_contract,
             crate::sales::controllers::contract::fill_out_contract,
+            crate::sales::controllers::contract::sign_contract,
         ])
 }

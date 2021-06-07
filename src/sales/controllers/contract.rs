@@ -1,12 +1,13 @@
 use rocket::serde::json::Json;
 use rocket::State;
 
-use crate::sales::domain_values::{ContractFailure, ContractNumber, Customer, Car, Brand, Amount, Currency};
+use crate::sales::domain_values::{ContractFailure, ContractNumber, Customer, Car, Brand, Amount, Currency, SignDate};
 use crate::sales::entities::Contract;
 use crate::sales::Sales;
-use crate::sales::services::{ViewContract, FillOutContract};
+use crate::sales::services::{ViewContract, FillOutContract, SignContract};
 use crate::sales::dtos::FillOutForm;
 use std::str::FromStr;
+use chrono::Utc;
 
 #[get("/view_contract/<contract_number>")]
 pub fn view_contract(me: &State<Sales>, contract_number: String) -> Result<Json<Contract>, ContractFailure> {
@@ -27,4 +28,12 @@ pub fn fill_out_contract(me: &State<Sales>, fill_out_form: Json<FillOutForm>) ->
 
     me.fill_out_contract(number, customer, car, price);
     Ok(())
+}
+
+#[post("/sign_contract", data = "<contract_number>")]
+pub fn sign_contract(me: &State<Sales>, contract_number: Json<String>) -> Result<(), ContractFailure> {
+    // TODO: Failure should be handled
+    let number = ContractNumber::new(contract_number.into_inner());
+    let sign_date = SignDate::from_date_time(Utc::now());
+    me.sign_contract(number, sign_date)
 }
