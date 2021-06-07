@@ -1,13 +1,15 @@
+use std::str::FromStr;
+
+use chrono::Utc;
 use rocket::serde::json::Json;
 use rocket::State;
 
-use crate::sales::domain_values::{ContractFailure, ContractNumber, Customer, Car, Brand, Amount, Currency, SignDate};
+use crate::sales::domain_values::{Amount, Brand, Car, ContractFailure, Currency, Customer};
+use crate::sales::dtos::FillOutForm;
 use crate::sales::entities::Contract;
 use crate::sales::Sales;
-use crate::sales::services::{ViewContract, FillOutContract, SignContract};
-use crate::sales::dtos::FillOutForm;
-use std::str::FromStr;
-use chrono::Utc;
+use crate::sales::services::{FillOutContract, SignContract, ViewContract};
+use crate::shared::domain_values::{ContractNumber, SignDate};
 
 #[get("/view_contract/<contract_number>")]
 pub fn view_contract(me: &State<Sales>, contract_number: String) -> Result<Json<Contract>, ContractFailure> {

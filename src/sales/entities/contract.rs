@@ -1,5 +1,6 @@
 use crate::rocket::serde::Serialize;
-use crate::sales::domain_values::{Amount, Car, ContractNumber, Customer, SignDate};
+use crate::sales::domain_values::{Amount, Car, Customer};
+use crate::shared::domain_values::{ContractNumber, SignDate};
 
 #[derive(Debug, Clone, Serialize, Getters)]
 #[serde(crate = "rocket::serde")]
@@ -47,8 +48,9 @@ impl Contract {
 #[cfg(test)]
 mod test {
     mod sign {
-        use crate::sales::domain_values::{Amount, Brand, Car, ContractNumber, Currency, Customer, SignDate};
+        use crate::sales::domain_values::{Amount, Brand, Car, Currency, Customer};
         use crate::sales::entities::Contract;
+        use crate::shared::domain_values::{ContractNumber, SignDate};
 
         #[test]
         #[should_panic]

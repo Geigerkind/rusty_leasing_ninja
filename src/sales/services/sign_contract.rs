@@ -1,5 +1,6 @@
-use crate::sales::domain_values::{ContractFailure, ContractNumber, SignDate};
+use crate::sales::domain_values::ContractFailure;
 use crate::sales::Sales;
+use crate::shared::domain_values::{ContractNumber, SignDate};
 
 pub trait SignContract {
     fn sign_contract(&self, number: ContractNumber, sign_date: SignDate) -> Result<(), ContractFailure>;

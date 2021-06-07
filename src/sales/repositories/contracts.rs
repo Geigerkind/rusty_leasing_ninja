@@ -1,7 +1,8 @@
-use crate::sales::entities::Contract;
-use crate::sales::domain_values::ContractNumber;
 use std::collections::HashMap;
 use std::sync::RwLock;
+
+use crate::sales::entities::Contract;
+use crate::shared::domain_values::ContractNumber;
 
 #[derive(Debug)]
 pub struct Contracts(RwLock<HashMap<ContractNumber, Contract>>);

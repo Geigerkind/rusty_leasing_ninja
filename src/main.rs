@@ -10,6 +10,7 @@ use crate::risk_management::RiskManagement;
 
 mod sales;
 mod risk_management;
+mod shared;
 
 #[launch]
 fn launch() -> _ {
