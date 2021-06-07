@@ -25,4 +25,7 @@ fn launch() -> _ {
             crate::sales::controllers::contract::fill_out_contract,
             crate::sales::controllers::contract::sign_contract,
         ])
+        .mount("/risk_management", routes![
+            crate::risk_management::controllers::contract::get_all_contracts,
+        ])
 }
