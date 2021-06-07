@@ -1,6 +1,6 @@
 use crate::sales::domain_values::Brand;
 
-#[derive(Getters)]
+#[derive(Getters, Debug, Clone)]
 pub struct Car {
     brand: Brand
 }

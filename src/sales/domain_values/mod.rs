@@ -5,6 +5,7 @@ pub use self::car::Car;
 pub use self::contract_number::ContractNumber;
 pub use self::customer::Customer;
 pub use self::sign_date::SignDate;
+pub use self::contract_failure::ContractFailure;
 
 mod currency;
 mod amount;
@@ -13,3 +14,4 @@ mod car;
 mod contract_number;
 mod customer;
 mod sign_date;
+mod contract_failure;

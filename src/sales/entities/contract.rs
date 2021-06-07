@@ -1,6 +1,6 @@
 use crate::sales::domain_values::{Amount, Car, ContractNumber, Customer, SignDate};
 
-#[derive(Getters)]
+#[derive(Getters, Debug, Clone)]
 pub struct Contract {
     number: ContractNumber,
     customer: Customer,

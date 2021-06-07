@@ -1,4 +1,4 @@
-#[derive(Getters)]
+#[derive(Getters, Debug, Clone)]
 pub struct Customer {
     forename: String,
     surname: String

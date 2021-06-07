@@ -1,6 +1,6 @@
 use crate::sales::domain_values::Currency;
 
-#[derive(Getters)]
+#[derive(Getters, Debug, Clone)]
 pub struct Amount {
     amount: u32,
     currency: Currency,

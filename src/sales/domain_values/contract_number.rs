@@ -1,3 +1,4 @@
+#[derive(Debug, Clone, PartialEq, Eq, Hash)]
 pub struct ContractNumber(String);
 
 impl ContractNumber {
