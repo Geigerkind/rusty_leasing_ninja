@@ -40,7 +40,7 @@ impl Contract {
         assert!(self.is_signed(), "Contract must be signed after signing it!");
     }
 
-    fn is_signed(&self) -> bool {
+    pub fn is_signed(&self) -> bool {
         self.sign_date.is_some()
     }
 }
