@@ -4,7 +4,7 @@ use crate::risk_management::entities::Contract;
 
 #[derive(Debug)]
 pub struct RiskManagement {
-    contracts: MemStorage<ContractNumber, Contract>
+    pub contracts: MemStorage<ContractNumber, Contract>
 }
 
 impl RiskManagement {
