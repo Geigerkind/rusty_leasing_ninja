@@ -29,5 +29,6 @@ fn launch() -> _ {
             crate::risk_management::controllers::contract::get_all_contracts,
             crate::risk_management::controllers::contract::get_contract,
             crate::risk_management::controllers::contract::sign_contract,
+            crate::risk_management::controllers::contract::vote_contract,
         ])
 }
