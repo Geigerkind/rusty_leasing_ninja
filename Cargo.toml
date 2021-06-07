@@ -1,0 +1,11 @@
+[package]
+name = "rusty_leasing_ninja"
+version = "0.1.0"
+edition = "2018"
+authors = ["Tom Dymel <td@wps.de>"]
+homepage = "https://leasingninja.github.io/"
+
+[dependencies]
+rocket = { git = "https://github.com/SergioBenitez/Rocket", rev = "0d53e23bf6cb86f9136fa8b37a92ba8076aacf67" }
+derive-getters = "0.2.0"
+chrono = "0.4.19"
