@@ -15,7 +15,7 @@ mod shared;
 #[launch]
 fn launch() -> _ {
     let sales = Sales::new();
-    let risk_management = RiskManagement;
+    let risk_management = RiskManagement::new();
 
     rocket::build()
         .manage(sales)

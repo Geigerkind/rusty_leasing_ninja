@@ -80,5 +80,20 @@ mod test {
             assert!(contract.is_signed());
             assert_eq!(contract.sign_date(), &Some(sign_date));
         }
+
+        #[test]
+        fn is_correctly_initialized() {
+            let contract_number = ContractNumber::new("1234-1234-1234-1234".to_owned()).unwrap();
+            let customer = Customer::new("Max".to_owned(), "Mustermann".to_owned());
+            let car = Car::new(Brand::Tesla);
+            let amount = Amount::new(12345, Currency::Euro);
+            let contract = Contract::new(contract_number.clone(), customer.clone(), car.clone(), amount.clone());
+
+            assert_eq!(contract.number, contract_number);
+            assert_eq!(contract.customer, customer);
+            assert_eq!(contract.car, car);
+            assert_eq!(contract.price, amount);
+            assert!(!contract.is_signed());
+        }
     }
 }

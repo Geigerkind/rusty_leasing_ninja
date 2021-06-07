@@ -1,7 +1,7 @@
 use crate::rocket::serde::Serialize;
 use crate::sales::domain_values::Currency;
 
-#[derive(Getters, Debug, Clone, Serialize)]
+#[derive(Getters, Debug, Clone, Serialize, PartialEq)]
 #[serde(crate = "rocket::serde")]
 pub struct Amount {
     amount: u32,

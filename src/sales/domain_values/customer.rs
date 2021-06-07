@@ -1,6 +1,6 @@
 use crate::rocket::serde::Serialize;
 
-#[derive(Getters, Debug, Clone, Serialize)]
+#[derive(Getters, Debug, Clone, Serialize, PartialEq)]
 #[serde(crate = "rocket::serde")]
 pub struct Customer {
     forename: String,

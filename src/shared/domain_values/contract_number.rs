@@ -1,5 +1,5 @@
 use crate::rocket::serde::Serialize;
-use crate::sales::domain_values::ContractFailure;
+use crate::shared::domain_values::ContractFailure;
 
 #[derive(Debug, Clone, PartialEq, Eq, Hash, Serialize)]
 #[serde(crate = "rocket::serde")]
