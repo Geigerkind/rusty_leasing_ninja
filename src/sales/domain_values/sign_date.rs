@@ -1,6 +1,9 @@
 use chrono::{DateTime, NaiveDate, Utc};
 
-#[derive(Debug, Clone, PartialEq)]
+use crate::rocket::serde::Serialize;
+
+#[derive(Debug, Clone, PartialEq, Serialize)]
+#[serde(crate = "rocket::serde")]
 pub struct SignDate(DateTime<Utc>);
 
 impl SignDate {

@@ -1,7 +1,10 @@
-#[derive(Getters, Debug, Clone)]
+use crate::rocket::serde::Serialize;
+
+#[derive(Getters, Debug, Clone, Serialize)]
+#[serde(crate = "rocket::serde")]
 pub struct Customer {
     forename: String,
-    surname: String
+    surname: String,
 }
 
 impl Customer {

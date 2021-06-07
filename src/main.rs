@@ -1,12 +1,20 @@
 #[macro_use]
-extern crate rocket;
-#[macro_use]
 extern crate derive_getters;
+#[macro_use]
+extern crate rocket;
+
+use crate::sales::Sales;
 
 mod sales;
 mod risk_management;
 
 #[launch]
 fn launch() -> _ {
-    rocket::build().mount("/", routes![])
+    let sales = Sales::new();
+
+    rocket::build()
+        .manage(sales)
+        .mount("/sales", routes![
+            crate::sales::controllers::contract::view_contract
+        ])
 }

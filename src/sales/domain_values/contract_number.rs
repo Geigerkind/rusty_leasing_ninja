@@ -1,4 +1,7 @@
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+use crate::rocket::serde::Serialize;
+
+#[derive(Debug, Clone, PartialEq, Eq, Hash, Serialize)]
+#[serde(crate = "rocket::serde")]
 pub struct ContractNumber(String);
 
 impl ContractNumber {

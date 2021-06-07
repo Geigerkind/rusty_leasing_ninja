@@ -2,9 +2,14 @@ use crate::sales::entities::Contract;
 use crate::sales::domain_values::ContractNumber;
 use std::collections::HashMap;
 
+#[derive(Debug)]
 pub struct Contracts(HashMap<ContractNumber, Contract>);
 
 impl Contracts {
+    pub fn new() -> Self {
+        Contracts(HashMap::default())
+    }
+
     pub fn save(&mut self, contract: Contract) {
         self.0.insert(contract.number().clone(), contract);
     }

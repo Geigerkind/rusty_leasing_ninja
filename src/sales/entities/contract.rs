@@ -1,6 +1,8 @@
+use crate::rocket::serde::Serialize;
 use crate::sales::domain_values::{Amount, Car, ContractNumber, Customer, SignDate};
 
-#[derive(Getters, Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Getters)]
+#[serde(crate = "rocket::serde")]
 pub struct Contract {
     number: ContractNumber,
     customer: Customer,

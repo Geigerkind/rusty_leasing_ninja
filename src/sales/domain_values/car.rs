@@ -1,6 +1,8 @@
+use crate::rocket::serde::Serialize;
 use crate::sales::domain_values::Brand;
 
-#[derive(Getters, Debug, Clone)]
+#[derive(Getters, Debug, Clone, Serialize)]
+#[serde(crate = "rocket::serde")]
 pub struct Car {
     brand: Brand
 }
